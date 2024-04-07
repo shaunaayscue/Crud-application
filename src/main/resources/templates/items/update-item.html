@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Groceries</title>
+        <link rel="stylesheet" href="../stylesheet.css">
+    </head>
+    <body>
+
+
+        <div class="card" style="  border: 1px solid;
+             margin: 2rem auto;
+             max-width: 500px;
+             min-height: 200px;
+             padding: 2rem;
+             background-color: #fff;
+             border-radius: 2px;
+             box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);">
+            <form th:action="${isUpdate}? '/items/update/id='+${item.itemId}
+                  :'/items/create'" name="item" method="post">
+                <table class="table">
+
+                    <tr th:if="${isUpdate}">
+                    <tr>
+                        <th>Item</th>
+                        <td><input type="text" name="title" 
+                                   th:value="${item.title}? ${item.title}" /></td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td><input type="text" name="price" 
+                                   th:value="${item.price}? ${item.price}"/></td>
+                    </tr>
+
+                    <tr>
+                        <th>Quantity</th>
+                        <td><input type="number" min="1" max="30" name="quantity" 
+                                   th:value="${item.quantity}? ${item.quantity}"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="UpBtn">
+                    <button type="submit" class="btnSave"  style="background-color: pink; text-decoration:none; color: white;   padding: 10px 20px;
+                            background-color: pink;
+                            text-decoration: none;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-weight: bold;
+                            transition: background-color 0.3s ease;">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </body>
+</html>

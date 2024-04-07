@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Groceries</title>
+        <link rel="stylesheet" href="../stylesheet.css">
+    </head>
+    <body>
+        <div class="container">
+            <h5 style="text-align: center; font-size: 70px">Grocery List</h5>
+            <div class="btnAdd">
+                <a class="btn btn-primary" style="color: black; text-decoration:none;" href="/items/create">Add Items to Grocery List</a>
+            </div>
+            <div class="card">
+                <div id="accordion"th:each="item : ${itemList}">
+                    <section class="centered">
+
+                        <div class="container">
+                            <div class="grocery-list" style="font-size: 20px">
+                                <div style="padding: 20px;">
+                                    <p><td th:text="'Item: '+${item.title} "></td></p>
+                                    <p> <td th:text="'Price: $'+${item.price} "></td></p>                           
+                                    <p>  <td th:text="'Quantity: '+${item.quantity} "></td></p>
+                                    <div class="btnss1">
+                                        <a data-toggle="tooltip" data-placement="top" 
+                                           title="Delete" 
+                                           th:href="@{/items/delete/id={itemId}(itemId=${item.itemId})}" 
+                                           class="btn btn-secondary btn-sm float-right" style="text-decoration:none; color: white; float: right;">
+                                            Delete
+                                        </a>
+                                    </div>
+
+                                    <div class="btnss2">
+                                        <a type="submit" class="btn btn-secondary btn-sm float-right" th:href="@{/items/update/id={itemId}(itemId=${item.itemId})}" style="text-decoration:none; color: white; float:right;"> Edit</a>        
+                                        </h5>
+                                    </div>
+                                </div> 
+                            </div>  
+                    </section>
+
+                </div>
+            </div>
+    </body>
+</html>
+
+
+
+
